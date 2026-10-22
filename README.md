@@ -1,5 +1,7 @@
 # wefixyourauto.com · Collision Auto Pros
 
+[![CI](https://github.com/CarlosAugustoNetoLima/colisionautocenter/actions/workflows/ci.yml/badge.svg)](https://github.com/CarlosAugustoNetoLima/colisionautocenter/actions/workflows/ci.yml)
+
 Site em três idiomas (espanhol, inglês e português) com duas páginas:
 
 - a página inicial é o Kit de Emergência, uma LP de captação com formulário: a copy e a ordem das seções vêm do wireframe do Figma, e o visual é minimalista e claro (60% branco, 30% preto, 10% azul), com fotos de alta resolução, efeitos de vidro, Inter, GSAP, parallax e microinterações;
@@ -9,7 +11,7 @@ O plano, a copy de referência e os briefings ficam em `docs/`, só na máquina 
 
 ## Rodar
 
-Precisa de Node 22 ou mais novo.
+Precisa de Node 22.19 ou mais novo (as dependências exigem `node >= 22.19.0`).
 
 ```bash
 npm install
@@ -19,6 +21,7 @@ npm run dev
 Abre em `http://localhost:4321`.
 
 ```bash
+npm run check     # confere os tipos (astro check)
 npm run build     # gera a versão final em dist/
 npm run preview   # serve dist/ para conferir
 npm run og        # gera as imagens de compartilhamento do Kit (precisa do Chrome)
@@ -115,4 +118,8 @@ Ligar `indexable`, preencher os identificadores de rastreamento, definir o endpo
 
 ## Deploy
 
-O projeto está ligado à Vercel pelo repositório do GitHub: cada push na `main` publica a versão de produção e cada branch ganha uma prévia. As variáveis do `.env.example` são configuradas no painel da Vercel.
+O projeto está ligado à Vercel pelo repositório do GitHub (`CarlosAugustoNetoLima/colisionautocenter`): cada push na `main` publica a versão de produção e cada branch ganha uma prévia. As variáveis do `.env.example` são configuradas no painel da Vercel.
+
+## CI
+
+Cada push e pull request na `main` roda o GitHub Actions (`.github/workflows/ci.yml`): instala as dependências com `npm ci`, confere os tipos com `npm run check` e compila com `npm run build`. Um sinal verde na aba Actions quer dizer que a `main` está pronta para publicar.
